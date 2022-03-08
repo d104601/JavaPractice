@@ -24,8 +24,9 @@ public class Assignment3_1 {
      */
     public static <E> List<E> reverse(List<E> lst)
     {
-        List<E> temp = new ArrayList<>(lst);
-        Collections.reverse(temp);
+        List<E> temp = new ArrayList<>();
+        for(int i = lst.size() - 1; i >= 0; i--)
+            temp.add(lst.get(i));
         return temp;
     }
 
