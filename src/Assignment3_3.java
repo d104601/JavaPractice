@@ -7,38 +7,48 @@ public class Assignment3_3 {
         Stack<Character> stack = new Stack<>();
 
         String a;
+        char temp;
         boolean flag = true;
 
         while(inFile.hasNext())
         {
-            a = inFile.next();
+            a = inFile.nextLine();
             for(int i = 0; i < a.length(); i++)
             {
-                if(a.charAt(i) == '(' || a.charAt(i) == '{' || a.charAt(i) == '[')
-                    stack.push(a.charAt(i));
-
                 switch (a.charAt(i))
                 {
+                    case '(':
+                        stack.push(a.charAt(i));
+                        break;
+                    case '{':
+                        stack.push(a.charAt(i));
+                        break;
+                    case '[':
+                        stack.push(a.charAt(i));
+                        break;
                     case ')':
-                        if(stack.pop() != '(')
-                        {
+                        temp = stack.pop();
+                        if(temp != '(')
                             flag = false;
-                            break;
-                        }
+                        break;
                     case '}':
-                        if(stack.pop() != '{')
-                        {
+                        temp = stack.pop();
+                        if(temp != '{')
                             flag = false;
-                            break;
-                        }
+                        break;
                     case ']':
-                        if(stack.pop() != '[')
-                        {
+                        temp = stack.pop();
+                        if(temp != '[')
                             flag = false;
-                            break;
-                        }
+                        break;
+                    default:
+                        break;
                 }
+                if(!flag)
+                    break;
             }
+            if(!flag)
+                break;
         }
 
         inFile.close();
